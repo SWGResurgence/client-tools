@@ -1231,7 +1231,7 @@ void ConfigClientGame::install(void)
 	KEY_STRING(afa5930b6c2b42e6b6ec38954855abc2, ""); // additionalCharacterSelectionCharacterName
 #endif
 
-	KEY_INT(maxWaypoints, 100); // Should be in sync with ConfigServerGames's maxWaypointsPerCharacter 
+	KEY_INT(maxWaypoints, 250); // Should be in sync with ConfigServerGames's maxWaypointsPerCharacter 
 
 	ExitChain::add(ConfigClientGame::remove, "ConfigClientGame::remove", 0, false);
 }
