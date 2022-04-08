@@ -462,7 +462,7 @@ SwgCuiHudWindowManager::~SwgCuiHudWindowManager ()
   
   if (m_sideToolbar)
 	{
-		m_singleToolbar->release();
+		m_sideToolbar->release();
 		m_sideToolbar = 0;
 	}
 
