@@ -104,6 +104,22 @@ namespace SwgCuiOptUiNamespace
 	{
 		return CuiPreferences::getSecondaryTargetMode();
 	}
+  
+  //----------------------------------------------------------------------
+
+	int onComboGroupFormatGet(const SwgCuiOptBase &, const UIComboBox &) {
+		return CuiPreferences::getGroupFormat();
+	}
+
+	//----------------------------------------------------------------------
+
+	void onComboGroupFormatSet(const SwgCuiOptBase &, const UIComboBox &, int value) {
+		CuiPreferences::setGroupFormat(static_cast<CuiPreferences::GroupFormat>(value));
+	}
+
+	int  getDefaultGroupFormatMode(const SwgCuiOptBase &, const UIComboBox &) {
+		return CuiPreferences::getGroupFormat();
+	}
 }
 
 using namespace SwgCuiOptUiNamespace;
@@ -265,6 +281,9 @@ m_callbackReceiverExpMonitor (0)
 
 	getCodeDataObject (TUIComboBox, combo, "comboSecondaryTarget");
 	registerComboBox (*combo, onComboSecondaryTargetSet, onComboSecondaryTargetGet, getDefaultSecondaryTargetMode);
+  
+  getCodeDataObject(TUIComboBox, combo, "comboGroupFormat");
+	registerComboBox(*combo, onComboGroupFormatSet, onComboGroupFormatGet, getDefaultGroupFormatMode);
 
 	getCodeDataObject (TUIComboBox, m_combo, "comboPalette");
 	{

@@ -334,6 +334,7 @@ namespace
 	Callback * ms_spaceCameraElasticityCallback     = 0;
 	Callback * ms_variableTargetingReticlePercentageCallback = 0;
 	Callback * ms_paletteChangedCallback            = 0;
+  Callback * ms_groupFormatChangedCallback 		    = 0;
 
 	const char * const s_force_prefix       = "force_";
 	const size_t       s_force_prefix_len   = strlen (s_force_prefix);
@@ -361,6 +362,8 @@ namespace
 	bool ms_visibleEnemyDamagerArrow				= true;
 
 	int  ms_currencyFormat							= static_cast<int>(CuiPreferences::CF_none);
+  
+  int  ms_groupFormat = static_cast<int>(CuiPreferences::GF_1_8);
 
 	bool ms_showCorpseLootIcon					    = true;
 	bool ms_showBackpack							= true;
@@ -467,6 +470,9 @@ void CuiPreferences::install ()
 
 	ms_paletteChangedCallback = new Callback;
 	ms_paletteChangedCallback->fetch();
+  
+  ms_groupFormatChangedCallback = new Callback;
+	ms_groupFormatChangedCallback->fetch();
 
 	ms_buffIconSettingsChangedCallback = new Callback;
 	ms_buffIconSettingsChangedCallback->fetch();
@@ -825,6 +831,7 @@ void CuiPreferences::install ()
 	REGISTER_OPTION(visibleEnemyDamagerArrow);
 
 	REGISTER_OPTION(currencyFormat);
+  REGISTER_OPTION(groupFormat);
 
 	REGISTER_OPTION(newVendorDoubleClick);
 	REGISTER_OPTION(disableAnimationPriorities);
@@ -877,6 +884,7 @@ void CuiPreferences::install ()
 
 	// Update our utils class with our loaded option.
 	setCurrencyFormat(static_cast<CuiPreferences::CurrencyFormat>(ms_currencyFormat));
+  setGroupFormat(static_cast<CuiPreferences::GroupFormat>(ms_groupFormat));
 	
 	// Update the config setting
 	setDisableAnimationPriorities(ms_disableAnimationPriorities);
@@ -931,6 +939,9 @@ void CuiPreferences::remove ()
 
 	ms_paletteChangedCallback->release();
 	ms_paletteChangedCallback = 0;
+  
+  ms_groupFormatChangedCallback->release();
+	ms_groupFormatChangedCallback = 0;
 
 	ms_buffIconSettingsChangedCallback->release ();
 	ms_buffIconSettingsChangedCallback = 0;
@@ -1295,6 +1306,13 @@ void CuiPreferences::setCurrencyFormat(CurrencyFormat cf)
 
 //----------------------------------------------------------------------
 
+void CuiPreferences::setGroupFormat(GroupFormat gf) {
+	ms_groupFormat = gf;
+	ms_groupFormatChangedCallback->performCallback();
+}
+
+//----------------------------------------------------------------------
+
 void CuiPreferences::setCanFireSecondariesFromToolbar (bool b)
 {
 	ms_canFireSecondariesFromToolbar = b;
@@ -1486,6 +1504,12 @@ Callback & CuiPreferences::getPaletteChangedCallback()
 
 //----------------------------------------------------------------------
 
+Callback & CuiPreferences::getGroupFormatChangedCallback() {
+	return *NON_NULL(ms_groupFormatChangedCallback);
+}
+
+//----------------------------------------------------------------------
+
 void CuiPreferences::signalKeybindingsChanged ()
 {
 	ms_useExpMonitorCallback->performCallback ();
@@ -1493,12 +1517,6 @@ void CuiPreferences::signalKeybindingsChanged ()
 }
 
 //----------------------------------------------------------------------
-//----------------------------------------------------------------------
-//----------------------------------------------------------------------
-//----------------------------------------------------------------------
-//----------------------------------------------------------------------
-//----------------------------------------------------------------------
-
 
 float CuiPreferences::getHudOpacity ()
 {
@@ -1637,6 +1655,13 @@ bool   CuiPreferences::getVisibleEnemyDamagerArrow ()
 int CuiPreferences::getCurrencyFormat()
 {
 	return ms_currencyFormat;
+}
+
+//----------------------------------------------------------------------
+
+int CuiPreferences::getGroupFormat()
+{
+	return ms_groupFormat;
 }
 
 //----------------------------------------------------------------------

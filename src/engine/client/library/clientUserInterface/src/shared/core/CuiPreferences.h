@@ -411,6 +411,17 @@ public:
 
 	static int getCurrencyFormat();
 	static void	setCurrencyFormat(CurrencyFormat cf);
+  
+  enum GroupFormat
+	{
+		GF_1_8,
+		GF_2_4,
+		GF_4_2,
+		GF_8_1
+	};
+
+	static int getGroupFormat();
+	static void setGroupFormat(GroupFormat gf);
 
 	enum PovHatMode
 	{
@@ -457,6 +468,7 @@ public:
 	static Callback & getSpaceCameraElasticityCallback();
 	static Callback & getVariableTargetingReticlePercentageCallback();
 	static Callback & getPaletteChangedCallback();
+  static Callback & getGroupFormatChangedCallback();
 
 	static void                refreshValues ();
 	static void                signalKeybindingsChanged ();

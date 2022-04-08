@@ -111,6 +111,7 @@ namespace
 	bool              ms_showStatusOverIntendedTarget;
 	bool			  ms_enableGimbal;
 	int				  ms_currencyFormat;
+  int         ms_groupFormat;
 	bool              ms_targetArrow;
 	bool              ms_damagerArrow;
 	bool              ms_visibleEnemyDamagerArrow;
@@ -251,6 +252,8 @@ void ConfigClientUserInterface::install ()
 	KEY_BOOL   (showStatusOverIntendedTarget,     true);
 	KEY_BOOL   (enableGimbal,					  true);
 	KEY_INT	   (currencyFormat,						0);
+  KEY_INT	   (currencyFormat, 0);
+	KEY_INT    (groupFormat, 0);
 	KEY_BOOL   (targetArrow,					  true);
 	KEY_BOOL   (damagerArrow,					  true);
 	KEY_BOOL   (visibleEnemyDamagerArrow,		  true);

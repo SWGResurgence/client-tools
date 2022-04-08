@@ -12,6 +12,7 @@
 #include "clientGame/CreatureObject.h"
 #include "clientGame/Game.h"
 #include "clientGame/GroupObject.h"
+#include "clientUserInterface/CuiPreferences.h"
 #include "clientUserInterface/CuiRadialMenuManager.h"
 #include "clientUserInterface/CuiSettings.h"
 #include "clientUserInterface/CuiStringIdsGroup.h"
@@ -110,7 +111,8 @@ m_heightManuallySet(false),
 m_sceneType(static_cast<int>(Game::getHudSceneType())),
 m_timerPage(NULL),
 m_timerText(NULL),
-m_timerBar(NULL)
+m_timerBar(NULL),
+m_lastGroupFormat(CuiPreferences::getGroupFormat())
 {
 	{
 		UIPage * sample = 0;
@@ -281,6 +283,10 @@ void SwgCuiGroup::update(float deltaTimeSecs)
 		}
 	}
 	
+  if (m_lastGroupFormat != CuiPreferences::getGroupFormat())
+		updateGroupMembers();
+
+	m_lastGroupFormat = CuiPreferences::getGroupFormat();
 	m_timerPage->SetVisible(s_groupPickupTimerActive);
 }
 
@@ -617,16 +623,38 @@ void SwgCuiGroup::addMember(NetworkId const & member, std::string const & member
 		NOT_NULL(mfdStatusPage);
 
 		getPage().AddChild(mfdStatusPage);
-		getPage().MoveChild(mfdStatusPage, UIBaseObject::Bottom);
-		
-		
+		getPage().MoveChild(mfdStatusPage, UIBaseObject::Bottom);		
 		mfdStatusPage->Link();
-		
-		
-
 
 		UIScalar const windowHeight = getPage().GetSizeIncrement().y;
 		mfdStatusPage->SetLocation(0, static_cast<UIScalar>(m_mfds->size()) * windowHeight);
+    
+    UIScalar const windowWidth = 210;
+		int const mfdSize = m_mfds->size();
+		int x = 0;
+		int y = 0;
+		switch (CuiPreferences::getGroupFormat()) {
+		    case CuiPreferences::GF_1_8:
+			    mfdStatusPage->SetLocation(0, static_cast<UIScalar>(mfdSize)* windowHeight);
+			    break;
+			case CuiPreferences::GF_2_4:
+				x = !(mfdSize % 2) ? 0 : 210;
+				y = (mfdSize - (mfdSize % 2)) / 2 * windowHeight;
+				if (mfdSize == 6) { x = 105; }
+				mfdStatusPage->SetLocation(x, y);
+				break;
+			case CuiPreferences::GF_4_2:
+				y = mfdSize < 4 ? 0 : windowHeight;
+				x = mfdSize < 4 ? mfdSize * windowWidth : windowHeight + (windowHeight / 2);
+				mfdStatusPage->SetLocation(x, y);
+				break;
+			case CuiPreferences::GF_8_1:
+				mfdStatusPage->SetLocation(static_cast<UIScalar>(mfdSize)* windowWidth, 0);
+				break;
+			default:
+				mfdStatusPage->SetLocation(0, static_cast<UIScalar>(mfdSize)* windowHeight);
+				break;
+		}
 
 		mfdStatus = SwgCuiStatusFactory::createStatusPage(static_cast<Game::SceneType>(m_sceneType), *mfdStatusPage, true);
 		NOT_NULL(mfdStatus);
@@ -701,11 +729,37 @@ void SwgCuiGroup::resizeGroupWindow(int numElements)
 	// RLS TODO - Fix composite code so we can use a composite here.
 	UIScalar const windowSize = clamp(s_minGroupSize, static_cast<UIScalar>(numElements), s_maxGroupSize);
 	UIScalar const height = getPage().GetSizeIncrement().y * windowSize;
+  UIScalar const width = 210 * windowSize;
 
 	UISize maxSize = getPage().GetMaximumSize();
 	
-	maxSize.y = height;
-	maxSize.x = getPage().GetSize().x;
+	switch (CuiPreferences::getGroupFormat()) {
+	    case CuiPreferences::GF_1_8:
+		    maxSize.y = height;
+		    maxSize.x = 210L;
+		    break;
+		case CuiPreferences::GF_2_4:
+			maxSize.y = height;
+			maxSize.y = clamp(0L, maxSize.y, 200L);
+			maxSize.x = width;
+			maxSize.x = clamp(0L, maxSize.x, 420L);
+			break;
+		case CuiPreferences::GF_4_2:
+			maxSize.y = height;
+			maxSize.y = clamp(0L, maxSize.y, 100L);
+			maxSize.x = width;
+			maxSize.x = clamp(0L, maxSize.x, 840L);
+			break;
+		case CuiPreferences::GF_8_1:
+			maxSize.y = 50L;
+			maxSize.x = width;
+			break;
+		default:
+			maxSize.y = height;
+			maxSize.x = 210L;
+			break;
+
+	}
 
 	if (s_groupPickupTimerActive)
 	{

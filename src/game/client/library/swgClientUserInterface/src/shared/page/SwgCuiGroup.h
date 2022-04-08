@@ -90,6 +90,8 @@ private:
 	UIPage *            m_timerPage;
 	UIPage *            m_timerBar;
 	UIText *			m_timerText;
+  
+  int m_lastGroupFormat;
 
 	UISmartPointer<UIPage> m_sample;
 
