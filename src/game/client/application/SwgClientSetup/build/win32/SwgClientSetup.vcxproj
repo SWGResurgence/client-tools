@@ -223,7 +223,7 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\..\src\win32\res\SwgClientSetup.ico" />
+    <Image Include="..\..\src\win32\res\ResurgenceClientSetup.ico" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\src\win32\res\SwgClientSetup.rc2" />
