@@ -5,7 +5,7 @@
 //
 // copyright 2003, sony online entertainment
 //
-// Example options.cfg
+// Example config_options.cfg
 /*
 
 	[ClientAudio]
@@ -105,7 +105,7 @@ namespace OptionsNamespace
 		S_sharedUtility
 	};
 
-	const TCHAR* const cms_fileName = _T("options.cfg");
+	const TCHAR* const cms_fileName = _T("config_options.cfg");
 
 	bool ms_disableAudio                 = false;
 	std::wstring ms_soundProvider (_T("Windows Speaker Configuration"));
@@ -579,7 +579,7 @@ bool Options::save ()
 	if (!outfile.Open (getFileName (), CFile::modeCreate | CFile::modeWrite | CFile::typeText))
 		return false;
 
-	outfile.WriteString (_T("# options.cfg - Please do not edit this auto-generated file.\n"));
+	outfile.WriteString (_T("# config_options.cfg - Please do not edit this auto-generated file.\n"));
 
 	//-- ClientAudio
 	outfile.WriteString (_T("\n[ClientAudio]\n"));
