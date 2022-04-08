@@ -45,7 +45,7 @@
 
 namespace SwgCuiResourceExtractionHopperNamespace
 {
-	const int maxRetrievable = 100000;
+	const int maxRetrievable = 10000000;
 
 	const char * const nameText        = "InnerPage.NameText";
 	const char * const efficiencyText  = "InnerPage.ResourceBar.EfficiencyText";
