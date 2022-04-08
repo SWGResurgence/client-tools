@@ -142,7 +142,7 @@ int ClientMain(
 
 	InstallTimer rootInstallTimer("root");
 
-	char clientWindowName[128] = "Star Wars Galaxies";
+	char clientWindowName[128] = "SWG: Resurgence";
 
 #if PRODUCTION != 1
 	snprintf(clientWindowName, sizeof(clientWindowName), "SwgClient (%s.%s)", Branch().getBranchName().c_str(), ApplicationVersion::getPublicVersion());
