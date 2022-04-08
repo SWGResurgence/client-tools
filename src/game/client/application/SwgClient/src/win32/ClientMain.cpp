@@ -160,7 +160,7 @@ int ClientMain(
 #if PRODUCTION == 0
 	data.configFile = "client_d.cfg";
 #else
-	data.configFile = "client.cfg";
+	data.configFile = "config_client.cfg";
 #endif
 	data.clockUsesSleep = true;
 	data.minFrameRate = 1.f;
