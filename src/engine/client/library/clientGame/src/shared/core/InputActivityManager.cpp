@@ -69,27 +69,7 @@ void InputActivityManager::remove()
 //-----------------------------------------------------------------------------
 bool InputActivityManager::setInactive(bool inactive)
 {
-	bool isRegistered = false;
-
-	if (GameNetwork::getConnectionServerConnection()) 
-	{
-		// obfuscation for ClientInactivityMessage message
-		GenericValueTypeMessage<bool> const msg("28afefcc187a11dc888b001", inactive);
-		GameNetwork::send(msg, true);           
-		isRegistered = true;
-
-		// for free trial account, cancel any recursive macro that may be running
-		if (inactive)
-		{
-			if (((Game::getSubscriptionFeatureBits() & ClientSubscriptionFeature::Base) == 0) ||
-				((Game::getServerSideSubscriptionFeatureBits() & ClientSubscriptionFeature::Base) == 0))
-			{
-				CuiConsoleHelper::dumpPausedCommands();
-			}
-		}
-	}
-
-	return isRegistered;
+	return true;
 }
 
 
