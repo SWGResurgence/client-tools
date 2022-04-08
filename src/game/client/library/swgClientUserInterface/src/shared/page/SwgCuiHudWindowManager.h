@@ -40,6 +40,7 @@ class SwgCuiSurvey;
 class SwgCuiTargets;
 class SwgCuiTicketPurchase;
 class SwgCuiToolbar;
+class SwgCuiSideToolbar;
 class TangibleObject;
 class UIPage;
 class UIText;
@@ -141,12 +142,15 @@ private:
 	SwgCuiInventory * createInventory (ClientObject * container, const std::string & slotName, bool usePaperDoll);
 	void              updateHudOpacity ();
 	UIPage * getToolbarPage();
+  boolean  getSideToolbar();
 	void cacheToolbar();
+  void cacheSideToolbar();
 	SwgCuiToolbar *getCachedToolbar();
 
 	SwgCuiChatWindow *         m_chatWindowMediator;
 	SwgCuiMfdStatus *          m_mfdStatusMediator;
 	SwgCuiToolbar *            m_toolbarMediator;
+  SwgCuiSideToolbar *        m_sideToolbarMediator;
 	SwgCuiNotifications *      m_notificationsMediator;
 	SwgCuiHighlight *          m_highlightMediator;
 	SwgCuiInventory *          m_inventory;
@@ -191,9 +195,11 @@ private:
 
 	UIPage * m_singleToolbarPage;
 	UIPage * m_doubleToolbarPage;
+  UIPage * m_sideToolbarPage;
 
 	SwgCuiToolbar *m_singleToolbar;
 	SwgCuiToolbar *m_doubleToolbar;
+  SwgCuiSideToolbar *m_sideToolbar;
 };
 
 //----------------------------------------------------------------------

@@ -71,6 +71,7 @@ namespace
 	float             ms_tooltipDelaySecs;
 	bool              ms_settingsEnabled;
 	bool              ms_netStatusEnabled;
+  bool              ms_sideToolbarEnabled;
 	bool              ms_pointerModeMouseCameraEnabled;
 	bool              ms_mouseModeDefault;
 	bool              ms_turnStrafesDuringMouseModeToggle;
@@ -209,6 +210,7 @@ void ConfigClientUserInterface::install ()
 	KEY_BOOL   (groundRadarTerrainEnabled,        true);
 	KEY_BOOL   (settingsEnabled,                  true);
 	KEY_BOOL   (netStatusEnabled,                 false);
+  KEY_BOOL   (sideToolbarEnabled,               false);
 	KEY_BOOL   (pointerModeMouseCameraEnabled,    true);
 	KEY_BOOL   (mouseModeDefault,                 false);
 	KEY_BOOL   (turnStrafesDuringMouseModeToggle, false);
@@ -602,6 +604,13 @@ bool ConfigClientUserInterface::getSettingsEnabled ()
 bool ConfigClientUserInterface::getNetStatusEnabled ()
 {
 	return ms_netStatusEnabled;
+}
+
+//----------------------------------------------------------------------
+
+bool ConfigClientUserInterface::getSideToolbarEnabled()
+{
+	return ms_sideToolbarEnabled;
 }
 
 //----------------------------------------------------------------------

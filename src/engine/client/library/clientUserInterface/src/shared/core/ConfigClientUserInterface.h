@@ -68,6 +68,7 @@ public:
 	static bool                getGroundRadarTerrainEnabled ();
 	static bool                getSettingsEnabled ();
 	static bool                getNetStatusEnabled ();
+  static bool                getSideToolbarEnabled();
 	static bool                getPointerModeMouseCameraEnabled ();
 	static bool                getMouseModeDefault ();
 	static bool                getTurnStrafesDuringMouseModeToggle ();

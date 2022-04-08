@@ -64,6 +64,7 @@ namespace
 	bool        ms_useDoubleToolbar                 = false;
 	bool		ms_showToolbarCooldownTimer			= false;
 	bool        ms_netStatusEnabled                 = false;
+  bool        ms_useSideToolbar                   = false;
 	bool        ms_pointerModeMouseCameraEnabled    = true;
 	bool        ms_mouseModeDefault[Game::ST_numTypes] = {false, false, false};
 	bool        ms_turnStrafesDuringMouseModeToggle = false;
@@ -492,6 +493,7 @@ void CuiPreferences::install ()
 	ms_useDoubleToolbar                 = false;
 	ms_showToolbarCooldownTimer			= false;
 	ms_netStatusEnabled                 = ConfigClientUserInterface::getNetStatusEnabled ();
+  ms_useSideToolbar                   = ConfigClientUserInterface::getSideToolbarEnabled();
 	ms_pointerModeMouseCameraEnabled    = ConfigClientUserInterface::getPointerModeMouseCameraEnabled ();
 	ms_mouseModeDefault[Game::ST_ground] = ConfigClientUserInterface::getMouseModeDefault ();
 	ms_mouseModeDefault[Game::ST_space] = false;
@@ -659,6 +661,7 @@ void CuiPreferences::install ()
 	REGISTER_OPTION(useDoubleToolbar);
 	REGISTER_OPTION(showToolbarCooldownTimer);
 	REGISTER_OPTION(netStatusEnabled);
+  REGISTER_OPTION(useSideToolbar);
 	REGISTER_OPTION(pointerModeMouseCameraEnabled);
 	REGISTER_OPTION(useNewbieTutorial);
 	REGISTER_OPTION(targetNothingUntargets);
@@ -1194,6 +1197,13 @@ void CuiPreferences::setNetStatusEnabled (bool b)
 
 //----------------------------------------------------------------------
 
+void CuiPreferences::setUseSideToolbar(bool b)
+{
+	ms_useSideToolbar = b;
+}
+
+//----------------------------------------------------------------------
+
 void CuiPreferences::setPointerModeMouseCameraEnabled (bool b)
 {
 	ms_pointerModeMouseCameraEnabled = b;
@@ -1549,6 +1559,13 @@ bool   CuiPreferences::getUseDoubleToolbar ()
 bool   CuiPreferences::getShowToolbarCooldownTimer()
 {
 	return ms_showToolbarCooldownTimer;
+}
+
+//----------------------------------------------------------------------
+
+bool CuiPreferences::getUseSideToolbar()
+{
+	return ms_useSideToolbar;
 }
 
 //----------------------------------------------------------------------

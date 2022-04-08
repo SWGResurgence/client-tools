@@ -743,6 +743,7 @@
     <ClCompile Include="..\..\src\shared\page\SwgCuiShipView.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Optimized|Win32'">MaxSpeed</Optimization>
     </ClCompile>
+    <ClCompile Include="..\..\src\shared\page\SwgCuiSideToolbar.cpp" />
     <ClCompile Include="..\..\src\shared\page\SwgCuiSpaceAssignPlayerFormation.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Optimized|Win32'">MaxSpeed</Optimization>
     </ClCompile>
@@ -1111,6 +1112,7 @@
     <ClInclude Include="..\..\src\shared\page\SwgCuiShipComponentManagement.h" />
     <ClInclude Include="..\..\src\shared\page\SwgCuiShipReticle.h" />
     <ClInclude Include="..\..\src\shared\page\SwgCuiShipView.h" />
+    <ClInclude Include="..\..\src\shared\page\SwgCuiSideToolbar.h" />
     <ClInclude Include="..\..\src\shared\page\SwgCuiSpaceAssignPlayerFormation.h" />
     <ClInclude Include="..\..\src\shared\page\SwgCuiSpaceButtonBar.h" />
     <ClInclude Include="..\..\src\shared\page\SwgCuiSpaceConversation.h" />

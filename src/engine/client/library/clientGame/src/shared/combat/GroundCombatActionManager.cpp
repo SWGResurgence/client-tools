@@ -99,11 +99,13 @@ namespace GroundCombatActionManagerNamespace
 
 	GroundCombatActionManager::attackCallback s_primaryAttackCallback = 0;
 	GroundCombatActionManager::attackCallback s_secondaryAttackCallback = 0;
+  GroundCombatActionManager::attackCallback s_sideSecondaryAttackCallback = 0;
 
 	GroundCombatActionManager::defaultActionCallback s_defaultActionCallback = 0;
 
 	std::string s_secondaryActionName;
 	Watcher<Object> s_secondaryActionObject;
+  int s_lastToolbarFired;
 
 	MessageDispatch::Callback s_callback;
 
@@ -554,6 +556,13 @@ void GroundCombatActionManager::registerSecondaryAttackCallback(attackCallback c
 
 // ----------------------------------------------------------------------
 
+void GroundCombatActionManager::registerSideSecondaryAttackCallback(attackCallback callback)
+{
+	s_sideSecondaryAttackCallback = callback;
+}
+
+// ----------------------------------------------------------------------
+
 void GroundCombatActionManager::registerDefaultActionCallback(defaultActionCallback callback)
 {
 	s_defaultActionCallback = callback;
@@ -561,10 +570,11 @@ void GroundCombatActionManager::registerDefaultActionCallback(defaultActionCallb
 
 // ----------------------------------------------------------------------
 
-void GroundCombatActionManager::setCurrentSecondaryAction(std::string const & actionName, Object * associatedObject)
+void GroundCombatActionManager::setCurrentSecondaryAction(std::string const & actionName, Object * associatedObject, int toolbar)
 {
 	s_secondaryActionName = actionName;
 	s_secondaryActionObject = associatedObject;
+  s_lastToolbarFired = toolbar;
 }
 
 // ----------------------------------------------------------------------
@@ -1155,7 +1165,7 @@ void GroundCombatActionManager::update(float const deltaTimeSecs, ObjectVector c
 				return;
 			}
 
-			if (s_secondaryAttackCallback != 0)
+			if ((s_secondaryAttackCallback != 0 && s_lastToolbarFired == 0) || (s_sideSecondaryAttackCallback != 0 && s_lastToolbarFired == 1))
 			{
 				// Stop attacking if the secondary attack wants us to...
 				if (secondaryActionNameHash != 0 && CombatDataTable::getCancelsAutoAttack(secondaryActionNameHash))
@@ -1167,7 +1177,6 @@ void GroundCombatActionManager::update(float const deltaTimeSecs, ObjectVector c
 				s_failedTestCodesShownSecondary = 0;
 				s_secondaryAttackCallback(targetId);
 			}
-
 
 			if(s_secondaryAttackFromToolbar)
 			{

@@ -106,6 +106,7 @@
 #include "swgClientUserInterface/SwgCuiTcgManager.h"
 #include "swgClientUserInterface/SwgCuiTcgWindow.h"
 #include "swgClientUserInterface/SwgCuiToolbar.h"
+#include "swgClientUserInterface/SwgCuiSideToolbar.h"
 #include "swgClientUserInterface/SwgCuiWebBrowserManager.h"
 #include "swgClientUserInterface/SwgCuiVoiceFlyBar.h"
 
@@ -785,6 +786,8 @@ bool  SwgCuiHudAction::performAction (const std::string & id, const Unicode::Str
 		//Logic: if there is a pending action, cancel that (and don't do the untarget business), otherwise untarget
 		if(SwgCuiToolbar::getActiveToolbar())
 			SwgCuiToolbar::getActiveToolbar()->clearCommandDisplayStates();
+    if (SwgCuiSideToolbar::getActiveToolbar())
+			SwgCuiSideToolbar::getActiveToolbar()->clearCommandDisplayStates();
 		if(CuiCombatManager::hasAnyCommandsInQueue())
 			ClientCommandQueue::clear();
 

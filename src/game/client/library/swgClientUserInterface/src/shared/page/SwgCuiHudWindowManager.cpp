@@ -98,6 +98,7 @@
 #include "swgClientUserInterface/SwgCuiTargets.h"
 #include "swgClientUserInterface/SwgCuiTicketPurchase.h"
 #include "swgClientUserInterface/SwgCuiToolbar.h"
+#include "swgClientUserInterface/SwgCuiSideToolbar.h"
 #include "swgClientUserInterface/SwgCuiTrade.h"
 #include "swgSharedNetworkMessages/ConsentRequestMessage.h"
 #include "swgSharedNetworkMessages/PermissionListCreateMessage.h"
@@ -156,6 +157,7 @@ m_callback                  (new MessageDispatch::Callback),
 m_chatWindowMediator        (0),
 m_mfdStatusMediator         (0),
 m_toolbarMediator           (0),
+m_sideToolbarMediator       (0),
 m_inventory                 (0),
 m_buttonBar                 (0),
 m_workspace                 (&workspace),
@@ -178,9 +180,11 @@ m_sendCloseHolocron         (false),
 m_blinkingMediator (0),
 m_blinkTime (0.f),
 m_singleToolbarPage(0),
+m_sideToolbarPage(0),
 m_doubleToolbarPage(0),
 m_singleToolbar(0),
-m_doubleToolbar(0)
+m_doubleToolbar(0),
+m_sideToolbar(0)
 {
 
 	{
@@ -222,6 +226,17 @@ m_doubleToolbar(0)
 			m_workspace->addMediator (*m_toolbarMediator);
 			cacheToolbar();
 		}
+    
+    hud.getCodeDataObject(TUIPage, m_sideToolbarPage, "SideToolbar");
+		m_sideToolbarPage->SetVisible(false);
+		m_sideToolbarMediator = new SwgCuiSideToolbar(*m_sideToolbarPage, Game::getHudSceneType());
+		m_sideToolbarMediator->setSettingsAutoSizeLocation(false, true);
+		m_sideToolbarMediator->setStickyVisible(!Game::isHudSceneTypeSpace());
+		m_sideToolbarMediator->setShowFocusedGlowRect(false);
+		m_sideToolbarMediator->fetch();
+		m_sideToolbarMediator->activate();
+		m_workspace->addMediator(*m_sideToolbarMediator);
+		cacheSideToolbar();
 
 		//-----------------------------------------------------------------
 		{
@@ -346,10 +361,21 @@ SwgCuiHudWindowManager::~SwgCuiHudWindowManager ()
 		{
 			m_workspace->removeMediator (*m_toolbarMediator);
 		}
+    
+    if (m_sideToolbarMediator != NULL)
+		{
+			m_workspace->removeMediator(*m_sideToolbarMediator);
+		}
 
 		if (m_buttonBar != NULL)
 		{
 			m_workspace->removeMediator (*m_buttonBar);
+		}
+    
+    if (m_toolbarMediator)
+		{
+			m_sideToolbarMediator->release();
+			m_sideToolbarMediator = 0;
 		}
 
 		if (m_notificationsMediator != NULL)
@@ -432,6 +458,12 @@ SwgCuiHudWindowManager::~SwgCuiHudWindowManager ()
 	{
 		m_doubleToolbar->release();
 		m_doubleToolbar = 0;
+	}
+  
+  if (m_sideToolbar)
+	{
+		m_singleToolbar->release();
+		m_sideToolbar = 0;
 	}
 
 	m_workspace      = 0;
@@ -1443,6 +1475,10 @@ void SwgCuiHudWindowManager::updateWindowManager (const float elapsedTime)
 		m_toolbarMediator->switchToPane(oldPane);
 		m_workspace->addMediator (*m_toolbarMediator);
 	}
+  if (m_toolbarMediator && (m_sideToolbarMediator->isSideToolbar() != CuiPreferences::getUseSideToolbar()))
+	{
+		m_sideToolbarMediator->updateVisibility();
+	}
 }
 
 //----------------------------------------------------------------------
@@ -1660,6 +1696,13 @@ UIPage *SwgCuiHudWindowManager::getToolbarPage()
 
 //----------------------------------------------------------------------
 
+boolean SwgCuiHudWindowManager::getSideToolbar()
+{
+	return CuiPreferences::getUseSideToolbar();
+}
+
+//----------------------------------------------------------------------
+
 void SwgCuiHudWindowManager::cacheToolbar()
 {
 	if(CuiPreferences::getUseDoubleToolbar())
@@ -1677,6 +1720,15 @@ void SwgCuiHudWindowManager::cacheToolbar()
 			m_singleToolbar = m_toolbarMediator;
 			m_singleToolbar->fetch();
 		}
+	}
+}
+
+void SwgCuiHudWindowManager::cacheSideToolbar()
+{
+	if (!m_sideToolbar)
+	{
+		m_sideToolbar = m_sideToolbarMediator;
+		m_sideToolbar->fetch();
 	}
 }
 

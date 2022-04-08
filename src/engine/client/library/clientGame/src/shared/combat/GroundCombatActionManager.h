@@ -49,10 +49,11 @@ public:
 
 	static void registerPrimaryAttackCallback(attackCallback callback);
 	static void registerSecondaryAttackCallback(attackCallback callback);
+  static void registerSideSecondaryAttackCallback(attackCallback callback);
 
 	static void registerDefaultActionCallback(defaultActionCallback callback);
 
-	static void setCurrentSecondaryAction(std::string const & actionName, Object * associatedObject = NULL);
+	static void setCurrentSecondaryAction(std::string const & actionName, Object * associatedObject = NULL, int toolbar = 0);
 
 	static void attemptAction(ActionType const actionType);
 	static void clearAction(ActionType const actionType);

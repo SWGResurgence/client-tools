@@ -215,6 +215,9 @@ m_callbackReceiverExpMonitor (0)
 
 	getCodeDataObject (TUICheckbox, checkbox, "checkDoubleToolbar");
 	registerCheckbox (*checkbox, CuiPreferences::setUseDoubleToolbar, CuiPreferences::getUseDoubleToolbar, SwgCuiOptBase::getFalse);
+  
+  getCodeDataObject(TUICheckbox, checkbox, "checkSideToolbar");
+	registerCheckbox(*checkbox, CuiPreferences::setUseSideToolbar, CuiPreferences::getUseSideToolbar, SwgCuiOptBase::getFalse);
 
 	getCodeDataObject(TUICheckbox, checkbox, "checkShowToolbarCommandCooldownTimer");
 	registerCheckbox(*checkbox, CuiPreferences::setShowToolbarCooldownTimer, CuiPreferences::getShowToolbarCooldownTimer, SwgCuiOptBase::getFalse);

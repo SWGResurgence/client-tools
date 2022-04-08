@@ -113,6 +113,18 @@ namespace CuiActions
 	MAKE_ACTION(toolbarSlot21);
 	MAKE_ACTION(toolbarSlot22);
 	MAKE_ACTION(toolbarSlot23);
+  MAKE_ACTION(toolbarSlot24);
+	MAKE_ACTION(toolbarSlot25);
+	MAKE_ACTION(toolbarSlot26);
+	MAKE_ACTION(toolbarSlot27);
+	MAKE_ACTION(toolbarSlot28);
+	MAKE_ACTION(toolbarSlot29);
+	MAKE_ACTION(toolbarSlot30);
+	MAKE_ACTION(toolbarSlot31);
+	MAKE_ACTION(toolbarSlot32);
+	MAKE_ACTION(toolbarSlot33);
+	MAKE_ACTION(toolbarSlot34);
+	MAKE_ACTION(toolbarSlot35);
 	MAKE_ACTION(toolbarBank2Slot00);
 	MAKE_ACTION(toolbarBank2Slot01);
 	MAKE_ACTION(toolbarBank2Slot02);
