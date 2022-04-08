@@ -97,7 +97,7 @@ namespace ClientMainNamespace
 {
 	void installConfigFileOverride ()
 	{
-		AbstractFile * const abstractFile = TreeFile::open ("misc/override.cfg", AbstractFile::PriorityData, true);
+		AbstractFile * const abstractFile = TreeFile::open ("config_custom.cfg", AbstractFile::PriorityData, true);
 		if (abstractFile)
 		{
 			int const length = abstractFile->length ();
