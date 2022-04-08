@@ -192,51 +192,54 @@ m_sideToolbar(0)
 
 		//-----------------------------------------------------------------
 		{
-			hud.getCodeDataObject (TUIPage,     mediatorPage,           "SystemMessage");
-			mediatorPage->SetEnabled (false);
-			SwgCuiSystemMessage * const sysMessage = new SwgCuiSystemMessage (*mediatorPage);
-			sysMessage->setStickyVisible (true);
-			sysMessage->activate         ();
-			m_workspace->addMediator     (*sysMessage);
+			hud.getCodeDataObject(TUIPage, mediatorPage, "SystemMessage");
+			mediatorPage->SetEnabled(false);
+			SwgCuiSystemMessage * const sysMessage = new SwgCuiSystemMessage(*mediatorPage);
+			sysMessage->setStickyVisible(true);
+			sysMessage->activate();
+			m_workspace->addMediator(*sysMessage);
 		} //lint !e429 custodial pointer not freed or returned.  The Workspace owns it.
 
 		//-----------------------------------------------------------------
 		{
-			hud.getCodeDataObject (TUIPage,     mediatorPage,           "SystemMessageNoob");
-			mediatorPage->SetEnabled (false);
-			SwgCuiSystemMessage * const sysMessageNoob = new SwgCuiSystemMessage (*mediatorPage, SwgCuiSystemMessage::T_noob);
-			sysMessageNoob->setStickyVisible (true);
-			sysMessageNoob->activate         ();
-			m_workspace->addMediator     (*sysMessageNoob);
+			hud.getCodeDataObject(TUIPage, mediatorPage, "SystemMessageNoob");
+			mediatorPage->SetEnabled(false);
+			SwgCuiSystemMessage * const sysMessageNoob = new SwgCuiSystemMessage(*mediatorPage, SwgCuiSystemMessage::T_noob);
+			sysMessageNoob->setStickyVisible(true);
+			sysMessageNoob->activate();
+			m_workspace->addMediator(*sysMessageNoob);
 		} //lint !e429 custodial pointer not freed or returned.  The Workspace owns it.
 
 		//-----------------------------------------------------------------
 		{
-			hud.getCodeDataObject (TUIPage,     m_singleToolbarPage,    "Toolbar");
-			hud.getCodeDataObject (TUIPage,     m_doubleToolbarPage,    "DoubleToolbar");
+			hud.getCodeDataObject(TUIPage, m_singleToolbarPage, "Toolbar");
+			hud.getCodeDataObject(TUIPage, m_doubleToolbarPage, "DoubleToolbar");
 			m_singleToolbarPage->SetVisible(false);
 			m_doubleToolbarPage->SetVisible(false);
-			m_toolbarMediator = new SwgCuiToolbar (*getToolbarPage(), Game::getHudSceneType());
-			m_toolbarMediator->setSettingsAutoSizeLocation (false, true);
+			m_toolbarMediator = new SwgCuiToolbar(*getToolbarPage(), Game::getHudSceneType());
+			m_toolbarMediator->setSettingsAutoSizeLocation(false, true);
 			m_toolbarMediator->setStickyVisible(!Game::isHudSceneTypeSpace());
 			m_toolbarMediator->setShowFocusedGlowRect(false);
-			m_toolbarMediator->fetch ();
-			m_toolbarMediator->activate ();
+			m_toolbarMediator->fetch();
+			m_toolbarMediator->activate();
 			m_toolbarMediator->startProcessingActions();
-			m_workspace->addMediator (*m_toolbarMediator);
+			m_workspace->addMediator(*m_toolbarMediator);
 			cacheToolbar();
 		}
     
-    hud.getCodeDataObject(TUIPage, m_sideToolbarPage, "SideToolbar");
-		m_sideToolbarPage->SetVisible(false);
-		m_sideToolbarMediator = new SwgCuiSideToolbar(*m_sideToolbarPage, Game::getHudSceneType());
-		m_sideToolbarMediator->setSettingsAutoSizeLocation(false, true);
-		m_sideToolbarMediator->setStickyVisible(!Game::isHudSceneTypeSpace());
-		m_sideToolbarMediator->setShowFocusedGlowRect(false);
-		m_sideToolbarMediator->fetch();
-		m_sideToolbarMediator->activate();
-		m_workspace->addMediator(*m_sideToolbarMediator);
-		cacheSideToolbar();
+    if (!Game::isHudSceneTypeSpace()) {
+			hud.getCodeDataObject(TUIPage, m_sideToolbarPage, "SideToolbar");
+			m_sideToolbarPage->SetVisible(false);
+			m_sideToolbarMediator = new SwgCuiSideToolbar(*m_sideToolbarPage, Game::getHudSceneType());
+			m_sideToolbarMediator->setSettingsAutoSizeLocation(false, true);
+			m_sideToolbarMediator->setStickyVisible(!Game::isHudSceneTypeSpace());
+			m_sideToolbarMediator->setShowFocusedGlowRect(false);
+			m_sideToolbarMediator->fetch();
+			m_sideToolbarMediator->activate();
+			//m_sideToolbarMediator->startProcessingActions();
+			m_workspace->addMediator(*m_sideToolbarMediator);
+			cacheSideToolbar();
+		}
 
 		//-----------------------------------------------------------------
 		{
@@ -372,7 +375,7 @@ SwgCuiHudWindowManager::~SwgCuiHudWindowManager ()
 			m_workspace->removeMediator (*m_buttonBar);
 		}
     
-    if (m_toolbarMediator)
+    if (m_sideToolbarMediator)
 		{
 			m_sideToolbarMediator->release();
 			m_sideToolbarMediator = 0;
@@ -1475,7 +1478,7 @@ void SwgCuiHudWindowManager::updateWindowManager (const float elapsedTime)
 		m_toolbarMediator->switchToPane(oldPane);
 		m_workspace->addMediator (*m_toolbarMediator);
 	}
-  if (m_toolbarMediator && (m_sideToolbarMediator->isSideToolbar() != CuiPreferences::getUseSideToolbar()))
+  if (m_sideToolbarMediator && (m_sideToolbarMediator->isSideToolbar() != CuiPreferences::getUseSideToolbar()))
 	{
 		m_sideToolbarMediator->updateVisibility();
 	}
