@@ -26,8 +26,8 @@ LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
-IDI_ICON1    ICON    "swg.ico"
-IDI_ICON2    ICON    "swg.ico"
+IDI_ICON1    ICON    "resurgence.ico"
+IDI_ICON2    ICON    "resurgence.ico"
 
 #ifdef APSTUDIO_INVOKED
 /////////////////////////////////////////////////////////////////////////////
@@ -77,16 +77,16 @@ BEGIN
     BEGIN
         BLOCK "040904b0"
         BEGIN
-            VALUE "Comments", "Compiled for Stella Bellum Testing"
+            VALUE "Comments", "Compiled for SWG: Resurgence"
             VALUE "CompanyName", "Sony Online Entertainment"
             VALUE "FileDescription", "SwgClient_r"
-            VALUE "FileVersion", "2.0b"
+            VALUE "FileVersion", "2.0c"
             VALUE "InternalName", "SwgClient_r"
             VALUE "LegalCopyright", "© Lucasfilm Entertainment Company Ltd. or Lucasfilm Ltd."
             VALUE "LegalTrademarks", "Star Wars Galaxies is a trademark of Lucasfilm Entertainment Company Ltd."
             VALUE "OriginalFilename", "SwgClient_r.exe"
-            VALUE "ProductName", "Star Wars Galaxies"
-            VALUE "ProductVersion", "2.0b"
+            VALUE "ProductName", "SWG: Resurgence"
+            VALUE "ProductVersion", "2.0c"
         END
     END
     BLOCK "VarFileInfo"

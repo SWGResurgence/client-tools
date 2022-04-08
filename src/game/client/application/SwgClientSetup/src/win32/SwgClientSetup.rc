@@ -265,7 +265,7 @@ END
 
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
-IDR_MAINFRAME           ICON                    "res\\SwgClientSetup.ico"
+IDR_MAINFRAME           ICON                    "res\\ResurgenceClientSetup.ico"
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -275,7 +275,7 @@ IDR_MAINFRAME           ICON                    "res\\SwgClientSetup.ico"
 IDD_SWGCLIENTSETUP_DIALOG DIALOGEX 0, 0, 225, 234
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
 EXSTYLE WS_EX_APPWINDOW
-CAPTION "SwgClientSetup"
+CAPTION "SWG: Resurgence Client Setup"
 FONT 8, "MS Sans Serif", 0, 0, 0x1
 BEGIN
     DEFPUSHBUTTON   "OK",IDOK,93,213,39,14
