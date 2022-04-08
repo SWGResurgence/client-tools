@@ -312,7 +312,9 @@ public:
 		GOT_chronicles_quest_holocron,
 		GOT_chronicles_quest_holocron_recipe,
 		GOT_chronicles_relic_fragment,
-		GameObjectType_Last = GOT_chronicles_relic_fragment,
+    GOT_beastmaster_misc,
+		GOT_beastmaster_pet,
+		GameObjectType_Last = GOT_beastmaster_pet,
 	};
 
 	enum SurfaceType

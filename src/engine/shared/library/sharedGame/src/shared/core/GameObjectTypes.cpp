@@ -304,6 +304,8 @@ namespace
 		MAKE_NAME(chronicles_quest_holocron);
 		MAKE_NAME(chronicles_quest_holocron_recipe);
 		MAKE_NAME(chronicles_relic_fragment);
+    MAKE_NAME(beastmaster_misc);
+		MAKE_NAME(beastmaster_pet);
 
 #undef MAKE_NAME
 
