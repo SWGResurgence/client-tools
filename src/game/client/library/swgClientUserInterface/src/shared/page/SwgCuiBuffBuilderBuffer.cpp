@@ -34,8 +34,6 @@
 #include "UITextbox.h"
 #include "UITreeView.h"
 
-bool SwgCuiBuffBuilderBuffer::m_failedLastVerification = false;
-
 namespace SwgCuiBuffBuilderBufferNamespace
 {
 	// points related constants
@@ -69,9 +67,6 @@ namespace SwgCuiBuffBuilderBufferNamespace
 	int ms_combatBonusFromExpertise = 0;
 	const std::string ms_inspiredWarfareExpertiseName = "expertise_en_inspired_warfare_1";
 	const std::string ms_combatBonusExpertiseSkillModName = "expertise_en_combat_buff_increase";
-
-	int ms_totalLogos = 0;
-	int ms_consecutiveFails = 0;
 }
 
 using namespace SwgCuiBuffBuilderBufferNamespace;
@@ -206,35 +201,9 @@ void SwgCuiBuffBuilderBuffer::OnButtonPressed( UIWidget *context )
 	//send the update packet
 	else if(context == m_acceptButton)
 	{
-		if(m_failedLastVerification || Random::random(1, 5) <= 2) // 40% chance
-		{
-			CuiStringVariablesData csvd;
-			Object const * sourceObj = Game::getPlayer();
-			Object const * receptObj = NetworkIdManager::getObjectById(m_recipientId);
-
-			if(!sourceObj || !receptObj)
-				return;
-
-			csvd.source = sourceObj->asClientObject();
-			csvd.target = receptObj->asClientObject();
-
-			Unicode::String str;
-			StringId promptId("ui_buffbuilder", "verify_prompt");
-			CuiStringVariablesManager::process (promptId, csvd, str);
-
-			ms_totalLogos = Random::random(1, 6);
-			CuiMessageBox * const box = CuiMessageBox::createOkCancelBoxWithInput(str);
-			box->generateVerificationImage(ms_totalLogos);
-
-			m_callback->connect (box->getTransceiverClosed (), *this, &SwgCuiBuffBuilderBuffer::onVerifyPromptClosed);
-
-		}
-		else
-		{
-			buildAndSendUpdateToServer(true);
-			m_committed = true;
-			m_acceptButton->SetEnabled(false);
-		}
+		buildAndSendUpdateToServer(true);
+		m_committed = true;
+		m_acceptButton->SetEnabled(false);
 	}
 	else if(context == m_clearButton)
 	{
@@ -879,45 +848,6 @@ void SwgCuiBuffBuilderBuffer::updateComponentDescription()
 		m_componentDescription->SetText(Unicode::narrowToWide(""));
 	}
 }
-
-void SwgCuiBuffBuilderBuffer::onVerifyPromptClosed(const CuiMessageBox & box)
-{
-	// Get the text input and verify the code here.
-	if(box.completedAffirmative())
-	{
-		UIText & inputText = box.getInputText();
-		UIString inputStr;
-		inputText.GetLocalText(inputStr);
-		std::string const narrowInput = Unicode::wideToNarrow(inputStr);
-
-		int answer = atoi(narrowInput.c_str());
-
-		if(answer == ms_totalLogos)
-		{
-			buildAndSendUpdateToServer(true);
-			m_committed = true;
-			m_acceptButton->SetEnabled(false);
-			m_failedLastVerification = false;
-			ms_consecutiveFails = 0;
-		}
-		else
-		{
-			CuiSystemMessageManager::sendFakeSystemMessage(Unicode::narrowToWide("Incorrect confirmation code entered. Please try again."));
-			m_failedLastVerification = true;
-			++ms_consecutiveFails;
-		}
-
-	}
-	else
-	{
-		m_failedLastVerification = true;
-		++ms_consecutiveFails;
-	}
-
-	if(ms_consecutiveFails >= 3)
-		closeNextFrame();
-}
-
 void SwgCuiBuffBuilderBuffer::addBuffToList()
 {
 	long selectedRow = m_buffTree->GetLastSelectedRow();
