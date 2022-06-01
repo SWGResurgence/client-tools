@@ -1863,7 +1863,7 @@ bool MemoryManager::reportToFile(char const *fileName, bool leak)
 
 // ======================================================================
 // DISABLE_MEMORY_MANAGER
-//#else
+#else
 // ======================================================================
 namespace MemoryManagerNamespace
 {
