@@ -32,13 +32,15 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+
+#include <iostream>
 #include <new>
 
-#define DISABLE_MEMORY_MANAGER 0
+//#define DISABLE_MEMORY_MANAGER 0
 
 //lint -e826 // Suspicious pointer-to-pointer conversion (area too small)
 
-#if !DISABLE_MEMORY_MANAGER
+//#if !DISABLE_MEMORY_MANAGER
 
 // ======================================================================
 // 
