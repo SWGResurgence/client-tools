@@ -1195,7 +1195,26 @@ void * MemoryManager::allocate(size_t size, uint32 owner, bool array, bool leakT
 	}
 #endif
 
+	void handler()
+	{
+		std::cout << "Memory allocation failed, terminating\n";
+		std::set_new_handler(nullptr);
+	}
+
 	ms_criticalSection->enter();
+		
+		std::set_new_handler(handler);
+		try
+		{
+			while (true)
+			{
+				new int[100000000ul];
+			}
+		}
+		catch (const std::bad_alloc& e)
+		{
+			std::cout << e.what() << '\n';
+		}
 
 		// get the size of the allocation
 		int allocSize = (cms_allocatedBlockSize + cms_guardBandSize + (size ? static_cast<int>(size) : 1) + cms_guardBandSize + 15) & ~15;
