@@ -33,7 +33,6 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
-#include <iostream>
 #include <new>
 
 //#define DISABLE_MEMORY_MANAGER 0
