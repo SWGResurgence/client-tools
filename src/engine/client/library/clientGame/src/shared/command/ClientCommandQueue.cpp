@@ -560,6 +560,8 @@ uint32 ClientCommandQueue::enqueueCommand(Command const &command, NetworkId cons
 					IGNORE_RETURN(planetOrZoneNames.insert("space_dathomir"));
 					IGNORE_RETURN(planetOrZoneNames.insert("space_kashyyyk"));
 					IGNORE_RETURN(planetOrZoneNames.insert("space_nova_orion"));
+          IGNORE_RETURN(planetOrZoneNames.insert("dxun"));
+          IGNORE_RETURN(planetOrZoneNames.insert("space_dxun"));
 				}
 
 				bool planetOrZoneNameSpecified = false;

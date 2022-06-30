@@ -731,6 +731,7 @@ void SwgCuiTicketPurchase::addArrivePlanetUiText ()
 		s_planetDisplayName[std::string("yavin4")] = std::string("Yavin IV");
 		s_planetDisplayName[std::string("mustafar")] = std::string("Mustafar");
 		s_planetDisplayName[std::string("kashyyyk_main")] = std::string("Kashyyyk");
+    s_planetDisplayName[std::string("dxun")] = std::string("Dxun");
 	}
 
 	UIDataSource* const dataSource = m_arrivePlanetComboBox->GetDataSource ();

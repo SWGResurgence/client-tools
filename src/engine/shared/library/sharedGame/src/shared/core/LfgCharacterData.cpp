@@ -238,6 +238,8 @@ namespace LfgCharacterDataNamespace
 		"space_ord_mantell",
 		"mustafar",
 		"space_nova_orion",
+    "dxun",
+    "space_dxun",
 		"" // last one must be blank/empty
 	};
 

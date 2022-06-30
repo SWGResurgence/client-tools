@@ -531,6 +531,7 @@ SwgCuiSpaceZoneMap::SwgCuiSpaceZoneMap(UIPage& page)
 		s_gcwScoreCategoryForSpaceZone["space_lok"] = "gcw_region_lok_14";
 		s_gcwScoreCategoryForSpaceZone["space_naboo"] = "gcw_region_naboo_14";
 		s_gcwScoreCategoryForSpaceZone["space_yavin4"] = "gcw_region_yavin4_18";
+    s_gcwScoreCategoryForSpaceZone["space_dxun"] = "gcw_region_dxun_16";
 	}
 }
 
