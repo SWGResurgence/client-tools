@@ -723,8 +723,6 @@ std::string LfgCharacterData::getDebugString() const
 		output += "Wookiee";
 	else if (species == SharedCreatureObjectTemplate::SP_zabrak)
 		output += "Zabrak";
-  else if (species == SharedCreatureObjectTemplate::SP_mandalorian)
-		output += "Mandalorian";
 	else
 		output += FormattedString<32>().sprintf("%d", static_cast<int>(species));
  
@@ -1282,15 +1280,6 @@ std::map<std::string, int> const & LfgCharacterData::calculateStatistics(std::ma
 				++(statistics[s_stat_zabrak_m]);
 			else if (iterLfgData->second.gender == SharedCreatureObjectTemplate::GE_female)
 				++(statistics[s_stat_zabrak_f]);
-		}
-    else if (iterLfgData->second.species == SharedCreatureObjectTemplate::SP_mandalorian)
-		{
-			++(statistics[s_stat_zabrak]);
-
-			if (iterLfgData->second.gender == SharedCreatureObjectTemplate::GE_male)
-				++(statistics[s_stat_mandalorian_m]);
-			else if (iterLfgData->second.gender == SharedCreatureObjectTemplate::GE_female)
-				++(statistics[s_stat_mandalorian_f]);
 		}
 
 		// profession and profession by gender
