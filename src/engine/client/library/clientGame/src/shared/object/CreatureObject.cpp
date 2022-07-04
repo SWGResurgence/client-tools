@@ -3141,6 +3141,7 @@ bool CreatureObject::isAppearanceWearable(Object const &object, std::string *app
 			case SharedCreatureObjectTemplate::SP_bothan:      { column = 15; } break;
 			case SharedCreatureObjectTemplate::SP_ithorian:    { column = 17; } break;
 			case SharedCreatureObjectTemplate::SP_sullustan:   { column = 19; } break;
+      case SharedCreatureObjectTemplate::SP_mandalorian: { column = 21; } break;
 		} //lint !e788 //enums not used
 
 		// Add in the gender index
@@ -4670,6 +4671,7 @@ void CreatureObject::checkWearing(Object **underWearObject, StringVector const &
 			case SharedCreatureObjectTemplate::SP_zabrak:
 			case SharedCreatureObjectTemplate::SP_ithorian:
 			case SharedCreatureObjectTemplate::SP_sullustan:
+      case SharedCreatureObjectTemplate::SP_mandalorian:
 				{
 					// Make sure this is a player (or hologram of a player) and not an npc
 					if (strstr(getObjectTemplate()->getName(), "player") != 0

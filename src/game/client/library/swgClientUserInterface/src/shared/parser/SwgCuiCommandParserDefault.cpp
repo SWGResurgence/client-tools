@@ -476,6 +476,7 @@ m_aliasHandler  (0)
 		s_mapLowercaseSingleArgToSearchAttribute[Unicode::toLower(Species::getLocalizedName(SharedCreatureObjectTemplate::SP_zabrak))] = LfgDataTable::getLfgLeafNodeByName("zabrak");
 		s_mapLowercaseSingleArgToSearchAttribute[Unicode::toLower(Species::getLocalizedName(SharedCreatureObjectTemplate::SP_ithorian))] = LfgDataTable::getLfgLeafNodeByName("ithorian");
 		s_mapLowercaseSingleArgToSearchAttribute[Unicode::toLower(Species::getLocalizedName(SharedCreatureObjectTemplate::SP_sullustan))] = LfgDataTable::getLfgLeafNodeByName("sullustan");
+    s_mapLowercaseSingleArgToSearchAttribute[Unicode::toLower(Species::getLocalizedName(SharedCreatureObjectTemplate::SP_mandalorian))] = LfgDataTable::getLfgLeafNodeByName("mandalorian");
 
 		// profession search group
 		s_mapLowercaseSingleArgToSearchAttribute[Unicode::narrowToWide("bh")] = LfgDataTable::getLfgLeafNodeByName("prof_bh");

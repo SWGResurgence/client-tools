@@ -357,6 +357,7 @@ public:
 		SP_atat = 227,
 		SP_geonosian = 228,
 		SP_veractyle = 229,
+    SP_mandalorian = 230,
 		Species_Last = SP_veractyle,
 	};
 
