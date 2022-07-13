@@ -80,7 +80,7 @@
 #include "swgClientUserInterface/SwgCuiG15Lcd.h"
 #include "swgClientUserInterface/SwgCuiManager.h"
 #include "swgSharedNetworkMessages/SetupSwgSharedNetworkMessages.h"
-
+#include "sharedFoundation/ConfigSharedFoundation.h"
 
 #include "Resource.h"
 
