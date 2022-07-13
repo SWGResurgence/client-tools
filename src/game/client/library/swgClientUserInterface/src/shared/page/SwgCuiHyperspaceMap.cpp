@@ -70,6 +70,7 @@ m_buttonCorellia(NULL),
 m_buttonDantooine(NULL),
 m_buttonDathomir(NULL),
 m_buttonEndor(NULL),
+m_buttonDxun(NULL),
 m_buttonLok(NULL),
 m_buttonNaboo(NULL),
 m_buttonRori(NULL),
@@ -97,6 +98,7 @@ m_selectedHyperspacePoint()
 	getCodeDataObject (TUIButton,   m_buttonYavin4,           "buttonYavin4");
 	getCodeDataObject (TUIButton,   m_buttonKashyyyk,         "buttonKashyyyk");
 	getCodeDataObject (TUIButton,   m_buttonOrdMantell,       "buttonOrdMantell");
+	getCodeDataObject (TUIButton,   m_buttonDxun,		      "buttonDxun");
 	getCodeDataObject (TUIText,     m_hyperspacePointName,           "hyperspacePointName");
 	getCodeDataObject (TUIText,     m_hyperspacePointDescription,    "hyperspacePointDescription");
 	getCodeDataObject (TUIText,     m_hyperspacePointSystemLocation, "hyperspacePointSystemLocation");
@@ -115,6 +117,7 @@ m_selectedHyperspacePoint()
 	registerMediatorObject (*m_buttonYavin4,           true);
 	registerMediatorObject (*m_buttonKashyyyk,         true);
 	registerMediatorObject (*m_buttonOrdMantell,       true);
+	registerMediatorObject (*m_buttonDxun,			   true);
 
 	m_hyperspaceButton->SetEnabled(false);
 	m_hyperspacePointName->Clear();
@@ -219,6 +222,7 @@ SwgCuiHyperspaceMap::~SwgCuiHyperspaceMap ()
 	m_buttonYavin4 = NULL;
 	m_buttonKashyyyk = NULL;
 	m_buttonOrdMantell = NULL;
+	m_buttonDxun = NULL;
 	m_hyperspacePointName = NULL;
 	m_hyperspacePointDescription = NULL;
 	m_hyperspacePointSystemLocation = NULL;
@@ -296,6 +300,10 @@ void SwgCuiHyperspaceMap::OnButtonPressed (UIWidget* const context)
 	{
 		createContextMenu("space_endor");
 	}
+    else if(context == m_buttonDxun)
+    {
+    createContextMenu("space_dxun");
+    }
 	else if(context == m_buttonLok)
 	{
 		createContextMenu("space_lok");

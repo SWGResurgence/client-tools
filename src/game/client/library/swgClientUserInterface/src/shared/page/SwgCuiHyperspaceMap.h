@@ -54,6 +54,7 @@ private:
 	UIButton * m_buttonYavin4;
 	UIButton * m_buttonKashyyyk;
 	UIButton * m_buttonOrdMantell;
+	UIButton * m_buttonDxun;
 	UIText * m_hyperspacePointName;
 	UIText * m_hyperspacePointDescription;
 	UIText * m_hyperspacePointSystemLocation;
