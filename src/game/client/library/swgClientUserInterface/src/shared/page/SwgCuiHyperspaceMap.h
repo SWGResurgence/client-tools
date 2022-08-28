@@ -45,6 +45,7 @@ private:
 	UIButton * m_buttonCorellia;
 	UIButton * m_buttonDantooine;
 	UIButton * m_buttonDathomir;
+	UIButton * m_buttonDxun;
 	UIButton * m_buttonEndor;
 	UIButton * m_buttonLok;
 	UIButton * m_buttonNaboo;
@@ -54,7 +55,6 @@ private:
 	UIButton * m_buttonYavin4;
 	UIButton * m_buttonKashyyyk;
 	UIButton * m_buttonOrdMantell;
-	UIButton * m_buttonDxun;
 	UIText * m_hyperspacePointName;
 	UIText * m_hyperspacePointDescription;
 	UIText * m_hyperspacePointSystemLocation;
