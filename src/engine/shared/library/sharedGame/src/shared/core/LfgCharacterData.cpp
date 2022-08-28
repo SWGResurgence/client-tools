@@ -211,6 +211,7 @@ namespace LfgCharacterDataNamespace
 		"lok",
 		"dantooine",
 		"dathomir",
+		"dxun",
 		"dungeon1",
 		"adventure1",
 		"adventure2",
@@ -220,6 +221,7 @@ namespace LfgCharacterDataNamespace
 		"space_lok",
 		"space_dantooine",
 		"space_dathomir",
+		"space_dxun",
 		"space_yavin4",
 		"space_endor",
 		"space_heavy1",
@@ -238,8 +240,6 @@ namespace LfgCharacterDataNamespace
 		"space_ord_mantell",
 		"mustafar",
 		"space_nova_orion",
-    "dxun",
-    "space_dxun",
 		"" // last one must be blank/empty
 	};
 

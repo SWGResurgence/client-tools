@@ -722,6 +722,7 @@ void SwgCuiTicketPurchase::addArrivePlanetUiText ()
 		s_planetDisplayName[std::string("corellia")] = std::string("Corellia");
 		s_planetDisplayName[std::string("dantooine")] = std::string("Dantooine");
 		s_planetDisplayName[std::string("dathomir")] = std::string("Dathomir");
+		s_planetDisplayName[std::string("dxun")] = std::string("Dxun");
 		s_planetDisplayName[std::string("endor")] = std::string("Endor");
 		s_planetDisplayName[std::string("lok")] = std::string("Lok");
 		s_planetDisplayName[std::string("naboo")] = std::string("Naboo");
@@ -731,7 +732,6 @@ void SwgCuiTicketPurchase::addArrivePlanetUiText ()
 		s_planetDisplayName[std::string("yavin4")] = std::string("Yavin IV");
 		s_planetDisplayName[std::string("mustafar")] = std::string("Mustafar");
 		s_planetDisplayName[std::string("kashyyyk_main")] = std::string("Kashyyyk");
-    s_planetDisplayName[std::string("dxun")] = std::string("Dxun");
 	}
 
 	UIDataSource* const dataSource = m_arrivePlanetComboBox->GetDataSource ();
