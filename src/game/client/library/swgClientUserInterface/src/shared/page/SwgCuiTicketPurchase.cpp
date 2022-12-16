@@ -722,6 +722,7 @@ void SwgCuiTicketPurchase::addArrivePlanetUiText ()
 		s_planetDisplayName[std::string("corellia")] = std::string("Corellia");
 		s_planetDisplayName[std::string("dantooine")] = std::string("Dantooine");
 		s_planetDisplayName[std::string("dathomir")] = std::string("Dathomir");
+		s_planetDisplayName[std::string("dxun")] = std::string("Dxun");
 		s_planetDisplayName[std::string("endor")] = std::string("Endor");
 		s_planetDisplayName[std::string("lok")] = std::string("Lok");
 		s_planetDisplayName[std::string("naboo")] = std::string("Naboo");

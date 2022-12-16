@@ -544,6 +544,7 @@ uint32 ClientCommandQueue::enqueueCommand(Command const &command, NetworkId cons
 					IGNORE_RETURN(planetOrZoneNames.insert("lok"));
 					IGNORE_RETURN(planetOrZoneNames.insert("dantooine"));
 					IGNORE_RETURN(planetOrZoneNames.insert("dathomir"));
+					IGNORE_RETURN(planetOrZoneNames.insert("dxun"));
 					IGNORE_RETURN(planetOrZoneNames.insert("kachirho"));
 					IGNORE_RETURN(planetOrZoneNames.insert("etyyy"));
 					IGNORE_RETURN(planetOrZoneNames.insert("khowir"));
@@ -558,6 +559,7 @@ uint32 ClientCommandQueue::enqueueCommand(Command const &command, NetworkId cons
 					IGNORE_RETURN(planetOrZoneNames.insert("space_lok"));
 					IGNORE_RETURN(planetOrZoneNames.insert("space_dantooine"));
 					IGNORE_RETURN(planetOrZoneNames.insert("space_dathomir"));
+					IGNORE_RETURN(planetOrZoneNames.insert("space_dxun"));
 					IGNORE_RETURN(planetOrZoneNames.insert("space_kashyyyk"));
 					IGNORE_RETURN(planetOrZoneNames.insert("space_nova_orion"));
 				}

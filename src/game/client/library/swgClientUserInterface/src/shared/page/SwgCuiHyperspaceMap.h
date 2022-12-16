@@ -45,6 +45,7 @@ private:
 	UIButton * m_buttonCorellia;
 	UIButton * m_buttonDantooine;
 	UIButton * m_buttonDathomir;
+	UIButton * m_buttonDxun;
 	UIButton * m_buttonEndor;
 	UIButton * m_buttonLok;
 	UIButton * m_buttonNaboo;

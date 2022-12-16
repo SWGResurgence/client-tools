@@ -69,6 +69,7 @@ m_cancelButton(NULL),
 m_buttonCorellia(NULL),
 m_buttonDantooine(NULL),
 m_buttonDathomir(NULL),
+m_buttonDxun(NULL),
 m_buttonEndor(NULL),
 m_buttonLok(NULL),
 m_buttonNaboo(NULL),
@@ -88,6 +89,7 @@ m_selectedHyperspacePoint()
 	getCodeDataObject (TUIButton,   m_buttonCorellia,         "buttonCorellia");
 	getCodeDataObject (TUIButton,   m_buttonDantooine,        "buttonDantooine");
 	getCodeDataObject (TUIButton,   m_buttonDathomir,         "buttonDathomir");
+	getCodeDataObject (TUIButton,   m_buttonDxun,		      "buttonDxun");
 	getCodeDataObject (TUIButton,   m_buttonEndor,            "buttonEndor");
 	getCodeDataObject (TUIButton,   m_buttonLok,              "buttonLok");
 	getCodeDataObject (TUIButton,   m_buttonNaboo,            "buttonNaboo");
@@ -106,6 +108,7 @@ m_selectedHyperspacePoint()
 	registerMediatorObject (*m_buttonCorellia,         true);
 	registerMediatorObject (*m_buttonDantooine,        true);
 	registerMediatorObject (*m_buttonDathomir,         true);
+	registerMediatorObject (*m_buttonDxun,			   true);
 	registerMediatorObject (*m_buttonEndor,            true);
 	registerMediatorObject (*m_buttonLok,              true);
 	registerMediatorObject (*m_buttonNaboo,            true);
@@ -163,6 +166,13 @@ m_selectedHyperspacePoint()
 			DEBUG_WARNING(true, ("Failed to find Galactic Map GCW Button for space zone [space_dathomir] using codeData value [gcwDathomir]"));
 		else
 			ms_gcwButtons.insert(std::make_pair<std::string, UIButton *>("gcw_region_dathomir_12", gcwButton));
+		
+		gcwButton = NULL;
+		getCodeDataObject(TUIButton, gcwButton, "gcwDxun");
+		if (!gcwButton)
+			DEBUG_WARNING(true, ("Failed to find Galactic Map GCW Button for space zone [space_dxun] using codeData value [gcwDxun]"));
+		else
+			ms_gcwButtons.insert(std::make_pair<std::string, UIButton *>("gcw_region_dxun_16", gcwButton));
 
 		gcwButton = NULL;
 		getCodeDataObject(TUIButton, gcwButton, "gcwEndor");
@@ -203,6 +213,7 @@ SwgCuiHyperspaceMap::~SwgCuiHyperspaceMap ()
 	m_buttonCorellia = NULL;
 	m_buttonDantooine = NULL;
 	m_buttonDathomir = NULL;
+	m_buttonDxun = NULL;
 	m_buttonEndor = NULL;
 	m_buttonLok = NULL;
 	m_buttonNaboo = NULL;
@@ -285,6 +296,10 @@ void SwgCuiHyperspaceMap::OnButtonPressed (UIWidget* const context)
 	{
 		createContextMenu("space_dathomir");
 	}
+	else if(context == m_buttonDxun)
+    {
+		createContextMenu("space_dxun");
+    }
 	else if(context == m_buttonEndor)
 	{
 		createContextMenu("space_endor");
@@ -387,4 +402,3 @@ void SwgCuiHyperspaceMap::OnPopupMenuSelection (UIWidget * context)
 }
 
 //===================================================================
-

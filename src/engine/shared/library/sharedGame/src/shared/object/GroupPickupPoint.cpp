@@ -40,6 +40,7 @@ bool GroupPickupPoint::isGroupPickupAllowedAtLocation(std::string const & planet
 		s_groupPickupAllowedLocation["lok"] = std::make_pair(std::make_pair(0, 0), std::make_pair(0, 0));
 		s_groupPickupAllowedLocation["dantooine"] = std::make_pair(std::make_pair(0, 0), std::make_pair(0, 0));
 		s_groupPickupAllowedLocation["dathomir"] = std::make_pair(std::make_pair(0, 0), std::make_pair(0, 0));
+		s_groupPickupAllowedLocation["dxun"] = std::make_pair(std::make_pair(0, 0), std::make_pair(0, 0));
 		s_groupPickupAllowedLocation["kashyyyk_main"] = std::make_pair(std::make_pair(0, 0), std::make_pair(0, 0));
 		s_groupPickupAllowedLocation["kashyyyk_hunting"] = std::make_pair(std::make_pair(0, 0), std::make_pair(0, 0));
 		s_groupPickupAllowedLocation["kashyyyk_dead_forest"] = std::make_pair(std::make_pair(0, 0), std::make_pair(0, 0));

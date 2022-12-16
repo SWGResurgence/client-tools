@@ -527,6 +527,7 @@ SwgCuiSpaceZoneMap::SwgCuiSpaceZoneMap(UIPage& page)
 		s_gcwScoreCategoryForSpaceZone["space_corellia"] = "gcw_region_corellia_14";
 		s_gcwScoreCategoryForSpaceZone["space_dantooine"] = "gcw_region_dantooine_17";
 		s_gcwScoreCategoryForSpaceZone["space_dathomir"] = "gcw_region_dathomir_12";
+		s_gcwScoreCategoryForSpaceZone["space_dxun"] = "gcw_region_dxun_16";
 		s_gcwScoreCategoryForSpaceZone["space_endor"] = "gcw_region_endor_16";
 		s_gcwScoreCategoryForSpaceZone["space_lok"] = "gcw_region_lok_14";
 		s_gcwScoreCategoryForSpaceZone["space_naboo"] = "gcw_region_naboo_14";
